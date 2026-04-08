@@ -80,14 +80,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="flex gap-4 pt-4">
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors">
-                <Github className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted/50 border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 transition-colors">
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
           </motion.div>
 
           {/* Contact Form */}
