@@ -37,9 +37,11 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-xl p-6 hover:border-primary/30 transition-colors group"
+              whileHover={{ y: -6 }}
+              className="glass-card rounded-xl p-6 hover:border-primary/40 transition-colors group hover-lift relative overflow-hidden"
             >
-              <skill.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <skill.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300" />
               <h3 className="font-display font-semibold text-lg mb-1">{skill.title}</h3>
               <p className="text-muted-foreground text-sm">{skill.desc}</p>
             </motion.div>
