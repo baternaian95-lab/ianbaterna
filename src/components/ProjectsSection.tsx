@@ -21,18 +21,6 @@ const projects = [
     tags: ["Agency", "Portfolio", "Branding"],
   },
   {
-    title: "Vivacity Training",
-    desc: "Professional development platform for VET sector professionals with online courses and membership access.",
-    url: "https://www.vivacity.training/",
-    tags: ["EdTech", "Membership", "LMS"],
-  },
-  {
-    title: "ComplyHub AI",
-    desc: "AI-powered compliance management SaaS for RTOs with standards mapping, evidence tracking, and audit-ready workflows.",
-    url: "https://complyhub.ai/",
-    tags: ["SaaS", "AI", "Compliance"],
-  },
-  {
     title: "Unicorn CMS",
     desc: "Content management system built for Australian businesses, offering streamlined website management and publishing workflows.",
     url: "https://unicorn-cms.au/",
@@ -68,14 +56,16 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card rounded-xl p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4 group hover:border-primary/30 transition-all hover:glow cursor-pointer"
+              whileHover={{ y: -4 }}
+              className="glass-card rounded-xl p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4 group hover:border-primary/40 transition-all hover:glow cursor-pointer relative overflow-hidden"
             >
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="font-display font-semibold text-xl lg:text-2xl group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-all duration-300 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0" />
                 </div>
                 <p className="text-muted-foreground text-sm lg:text-base max-w-2xl">
                   {project.desc}
@@ -83,7 +73,7 @@ const ProjectsSection = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground">
+                  <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground border border-border/50 group-hover:border-primary/30 group-hover:bg-primary/5 transition-colors">
                     {tag}
                   </span>
                 ))}

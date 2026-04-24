@@ -28,18 +28,28 @@ const HeroSection = () => {
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold leading-[1.1] mb-6">
               Hi, I'm{" "}
-              <span className="text-gradient">Ian Baterna</span>
+              <span className="text-gradient-animated">Ian Baterna</span>
             </h1>
             <p className="text-muted-foreground text-lg lg:text-xl max-w-xl leading-relaxed mb-8">
               A results-driven web developer with 4+ years of experience building high-performing, user-centered digital experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#projects" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold hover:opacity-90 transition-opacity">
+              <motion.a
+                href="#projects"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-display font-semibold shadow-lg shadow-primary/20 transition-shadow hover:shadow-primary/40"
+              >
                 View My Work
-              </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-border text-foreground font-display font-medium hover:bg-secondary transition-colors">
+              </motion.a>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg border border-border text-foreground font-display font-medium hover:bg-secondary hover:border-primary/40 transition-colors"
+              >
                 Get In Touch
-              </a>
+              </motion.a>
             </div>
           </motion.div>
 
