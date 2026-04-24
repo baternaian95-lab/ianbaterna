@@ -38,8 +38,7 @@ const SkillsSection = () => {
             Skills
           </p>
           <h2 className="text-3xl lg:text-5xl font-display font-bold mb-6">
-            Tools & technologies<br />
-            <span className="text-muted-foreground">I work with daily.</span>
+            Tools & technologies
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed">
             A curated stack honed across 5+ years of building, optimizing, and shipping production-grade web experiences.
