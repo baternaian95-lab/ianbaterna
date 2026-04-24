@@ -6,8 +6,8 @@ import {
 } from "lucide-react";
 
 const skills = [
-  { name: "WordPress Development", icon: Globe2 },
-  { name: "Search Engine Optimization", icon: Search },
+  { name: "WordPress", icon: Globe2 },
+  { name: "SEO", icon: Search },
   { name: "Supabase Backend", icon: Database },
   { name: "HTML, CSS, JavaScript", icon: FileCode2 },
   { name: "Web Design", icon: Palette },
@@ -16,7 +16,7 @@ const skills = [
   { name: "Firebase Studio", icon: Sparkles },
   { name: "SiteGround", icon: Server },
   { name: "Lovable.dev", icon: Sparkles },
-  { name: "Google Developer Console", icon: Settings2 },
+  { name: "Google Console", icon: Settings2 },
   { name: "Microsoft Apps", icon: Briefcase },
   { name: "Elementor Pro", icon: LayoutGrid },
   { name: "Web Management", icon: Workflow },
