@@ -9,25 +9,13 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-// Ease-out quart — fast start, smooth settle. No initial delay.
-const easeOutQuart = (t: number) => 1 - Math.pow(1 - t, 4);
+const smoothScrollTo = (targetY: number) => {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const smoothScrollTo = (targetY: number, duration = 700) => {
-  const startY = window.scrollY;
-  const diff = targetY - startY;
-  if (Math.abs(diff) < 1) return;
-  const startTime = performance.now();
-
-  // Kick off immediately on this frame so the user sees motion on click.
-  const step = (now: number) => {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = easeOutQuart(progress);
-    window.scrollTo(0, startY + diff * eased);
-    if (progress < 1) requestAnimationFrame(step);
-  };
-
-  step(performance.now());
+  window.scrollTo({
+    top: Math.max(0, targetY),
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
 };
 
 const handleNavClick = (
