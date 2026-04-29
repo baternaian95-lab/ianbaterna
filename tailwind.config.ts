@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Geist', 'system-ui', 'sans-serif'],
-        body: ['Geist', 'system-ui', 'sans-serif'],
+        display: ['Jost', 'system-ui', 'sans-serif'],
+        body: ['Jost', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
