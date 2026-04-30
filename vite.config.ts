@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: process.env.VITE_BASE_PATH || "/", // ✅ dynamic base
+  base: "/ianbaterna/", // ✅ FIXED for GitHub Pages
 
   server: {
     host: "::",
