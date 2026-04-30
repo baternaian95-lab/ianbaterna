@@ -94,11 +94,11 @@ const Navbar = () => {
         {open && (
           <motion.div
             key="mobile-menu"
-            initial={{ clipPath: "circle(0% at 100% 0%)" }}
-            animate={{ clipPath: "circle(150% at 100% 0%)" }}
-            exit={{ clipPath: "circle(0% at 100% 0%)" }}
-            transition={{ duration: 0.55, ease: [0.83, 0, 0.17, 1] }}
-            className="md:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.5, ease: [0.83, 0, 0.17, 1] }}
+            className="md:hidden fixed inset-0 z-50 bg-background border-b border-border/50"
           >
             <div className="flex flex-col h-full pt-24 px-6">
               <div className="flex-1 flex flex-col">
