@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
   { label: "About", href: "#about" },
@@ -39,6 +39,16 @@ const handleNavClick = (
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
   return (
     <motion.nav
       initial={{ y: -40, opacity: 0 }}
@@ -50,7 +60,7 @@ const Navbar = () => {
         <a
           href="#"
           onClick={(e) => handleNavClick(e, "#")}
-          className="font-display font-bold text-lg group"
+          className="relative z-[60] font-display font-bold text-lg group"
         >
           ian<span className="text-primary">.</span>
         </a>
@@ -70,29 +80,68 @@ const Navbar = () => {
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground">
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="md:hidden text-foreground relative z-[60]"
+        >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-xl px-5 sm:px-6 pb-4 pt-2">
-          {links.map(l => (
-            <a
-              key={l.label}
-              href={l.href}
-              onClick={(e) => {
-                handleNavClick(e, l.href);
-                setOpen(false);
-              }}
-              className="block py-3 text-base text-muted-foreground hover:text-foreground transition-colors border-b border-border/30 last:border-0"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ clipPath: "circle(0% at 100% 0%)" }}
+            animate={{ clipPath: "circle(150% at 100% 0%)" }}
+            exit={{ clipPath: "circle(0% at 100% 0%)" }}
+            transition={{ duration: 0.55, ease: [0.83, 0, 0.17, 1] }}
+            className="md:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl"
+          >
+            <div className="flex flex-col h-full pt-24 px-6">
+              <div className="flex-1 flex flex-col">
+                {links.map((l, i) => (
+                  <motion.a
+                    key={l.label}
+                    href={l.href}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 30 }}
+                    transition={{
+                      delay: 0.15 + i * 0.07,
+                      duration: 0.4,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    onClick={(e) => {
+                      handleNavClick(e, l.href);
+                      setOpen(false);
+                    }}
+                    className="group flex items-center justify-between py-5 border-b border-border/40 text-foreground"
+                  >
+                    <span className="font-display text-2xl font-semibold tracking-tight transition-colors group-hover:text-primary">
+                      {l.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      0{i + 1}
+                    </span>
+                  </motion.a>
+                ))}
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: 0.45, duration: 0.4 }}
+                className="py-8 text-xs text-muted-foreground"
+              >
+                © {new Date().getFullYear()} Ian Baterna
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
